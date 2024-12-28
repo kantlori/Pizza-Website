@@ -328,4 +328,17 @@ Form {
     color: #333;
     font-size: 22px;
     font-weight: 600;
+    transform: 0.3s transform ease;
+}
+
+.order-price button:hover {
+    transform: scale(1.01);
+    background-color: #fdca13de;
+    cursor: pointer;
+}
+
+.order-price button:disabled {
+    background-color: #5f5f5f8a;
+    cursor: not-allowed;
+    transform: scale(1.00);
 }

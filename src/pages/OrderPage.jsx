@@ -133,7 +133,8 @@ function OrderPage({ onBack }) {
                     </FormGroup>
                     <FormGroup className='extras'>
                         <h6>Ek Malzemeler</h6>
-                        <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
+                        <p>En Fazla 10 malzeme seçebilirsiniz. 5₺ (En az 4 malzeme seçmelisiniz)</p>
+
                         <div className='extra-elements'>
                             {['Pepperoni', 'Sosis', 'Jambon', 'Tavuk', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalapeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping) => (
                                 <Label key={topping} className='extra-item'>
@@ -153,7 +154,7 @@ function OrderPage({ onBack }) {
                         <Label>İsminiz</Label>
                         <Input
                             type="text"
-                            placeholder="Siparişine eklemek istediğin bir not var mı?"
+                            placeholder="Adınız..."
                             value={order.username}
                             onChange={(e) => updateOrder('username', e.target.value)}
                             style={{ width: "50%" }} />
@@ -184,9 +185,14 @@ function OrderPage({ onBack }) {
                                 <div className="total-price">
                                     <p>Toplam:</p> <p>{totalPrice}₺</p>
                                 </div>
-
                             </div>
-                            <Button color="primary" onClick={handleSubmit}>Sipariş Ver</Button>
+                            <Button
+                                color="primary"
+                                onClick={handleSubmit}
+                                disabled={order.selectedToppings.length < 4}
+                            >
+                                Sipariş Ver
+                            </Button>
                         </FormGroup>
                     </div>
                 </Form>
