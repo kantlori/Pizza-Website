@@ -3,8 +3,9 @@ import axios from 'axios';
 import pizzaData from '../fakeData';
 import { Form, FormGroup, Label, Button, Input, Container } from 'reactstrap';
 import "../css/OrderPage.css"
+import "../../images/iteration-1-images/logo.svg"
 
-function OrderPage() {
+function OrderPage({ onBack }) {
     const [order, setOrder] = useState({
         pizzaCount: 1,
         selectedSize: "orta",
@@ -25,10 +26,18 @@ function OrderPage() {
 
     const handleToppingChange = (event) => {
         const value = event.target.value;
+
         setOrder((prevOrder) => {
-            const selectedToppings = prevOrder.selectedToppings.includes(value)
+            const isSelected = prevOrder.selectedToppings.includes(value);
+            if (!isSelected && prevOrder.selectedToppings.length >= 10) {
+                alert("En fazla 10 malzeme seçebilirsiniz.");
+                return prevOrder;
+            }
+
+            const selectedToppings = isSelected
                 ? prevOrder.selectedToppings.filter((topping) => topping !== value)
                 : [...prevOrder.selectedToppings, value];
+
             return { ...prevOrder, selectedToppings };
         });
     };
@@ -53,10 +62,12 @@ function OrderPage() {
     return (
         <div >
             <header>
-                <h1>Teknolojik Yemekler</h1>
+                <img src="../../images/iteration-1-images/logo.svg" alt="" />
                 <div className="order-header-buttons">
-                    <button>Anasayfa</button>
+                    <button onClick={onBack}>Anasayfa</button>
+                    <p>-</p>
                     <button>Seçenekler</button>
+                    <p>-</p>
                     <button>Sipariş Oluştur</button>
                 </div>
             </header>
@@ -119,24 +130,25 @@ function OrderPage() {
                             </select>
                         </div>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className='extras'>
                         <h6>Ek Malzemeler</h6>
                         <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
-                        <div>
-                            {['pepperoni', 'sosis', 'jambon', 'tavuk', 'soğan', 'domates', 'mısır', 'sucuk', 'jalapeno', 'sarımsak', 'biber', 'ananas', 'kabak'].map((topping) => (
-                                <Label key={topping}>
+                        <div className='extra-elements'>
+                            {['Pepperoni', 'Sosis', 'Jambon', 'Tavuk', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalapeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping) => (
+                                <Label key={topping} className='extra-item'>
                                     <input
                                         type="checkbox"
                                         value={topping}
                                         checked={order.selectedToppings.includes(topping)}
                                         onChange={handleToppingChange}
+                                        className='extra-checkbox'
                                     />
                                     {topping.charAt(0).toUpperCase() + topping.slice(1)}
                                 </Label>
                             ))}
                         </div>
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className='customer-note'>
                         <Label>Sipariş Notu</Label>
                         <Input
                             type="text"
@@ -145,27 +157,30 @@ function OrderPage() {
                             onChange={(e) => updateOrder('orderNote', e.target.value)}
                         />
                     </FormGroup>
+                    <hr />
+                    <div className='order-control'>
+                        <FormGroup>
+                            <div className="pizza-count">
+                                <Button color="warning" onClick={() => updateOrder('pizzaCount', Math.max(1, order.pizzaCount - 1))}>-</Button>
+                                <p>{order.pizzaCount}</p>
+                                <Button color="warning" onClick={() => updateOrder('pizzaCount', order.pizzaCount + 1)}>+</Button>
+                            </div>
+                        </FormGroup>
 
-                    <FormGroup>
-                        <div className="pizza-count">
-                            <Button color="warning" onClick={() => updateOrder('pizzaCount', Math.max(1, order.pizzaCount - 1))}>-</Button>
-                            <p>{order.pizzaCount}</p>
-                            <Button color="warning" onClick={() => updateOrder('pizzaCount', order.pizzaCount + 1)}>+</Button>
-                        </div>
-                    </FormGroup>
-
-                    <FormGroup>
-                        <div className="order-summary">
-                            <h4>Sipariş Toplamı</h4>
+                        <FormGroup className='order-price'>
                             <div className="order-details">
-                                <p>Seçimler: {order.selectedSize} boyut, {order.selectedDough} hamur, {order.selectedToppings.join(', ')}</p>
-                                <p>Toplam Pizza Fiyatı: {totalPizzaPrice}₺</p>
-                                <p>Ek Malzemeler: {totalToppingPrice}₺</p>
-                                <h5>Toplam: {totalPrice}₺</h5>
+                                <h4>Sipariş Toplamı</h4>
+                                <div className="extra-price">
+                                    <p>Seçimler:</p> <p>{totalToppingPrice}₺</p>
+                                </div>
+                                <div className="total-price">
+                                    <p>Toplam:</p> <p>{totalPrice}₺</p>
+                                </div>
+
                             </div>
                             <Button color="primary" onClick={handleSubmit}>Sipariş Ver</Button>
-                        </div>
-                    </FormGroup>
+                        </FormGroup>
+                    </div>
                 </Form>
             </section>
         </div>

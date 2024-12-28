@@ -6,22 +6,37 @@ header {
     width: 100%;
     background-color: #CE2829;
     height: 160px;
+    font-family: "Barlow", serif;
 }
 
 .order-header-buttons {
-    align-self: flex-start;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 125px;
+    left: 32vw;
+    gap: 10px;
+
+    font-weight: 100;
 }
 
-header h1 {
+.order-header-buttons button {
+    all: unset;
+    cursor: pointer;
+}
+
+.order-header-buttons button:last-child {
+    font-weight: 500;
+}
+
+header img {
     align-self: center;
-    font-family: "Barlow", serif;
-    font-size: 36px;
-    letter-spacing: -0.05em;
-    color: #fff
 }
 
 section {
     padding: 0px 32vw;
+    font-family: "Roboto Condensed", serif;
 }
 
 .pizza-info {
@@ -73,6 +88,10 @@ section {
 
 Form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 50px;
 }
 
 .pizza-sizes {
@@ -90,10 +109,12 @@ Form {
     max-width: 300px;
 }
 
-.dough-header {
+.dough-header,
+.extras h6,
+.customer-note label,
+.order-details h4 {
     font-size: 24px;
     font-weight: 600;
-    letter-spacing: 0.02em;
 }
 
 .dough-option {
@@ -158,4 +179,153 @@ Form {
 
 .dough-thickness select::-ms-expand {
     display: none;
+}
+
+.extras {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.extras p {
+    color: #333;
+    position: relative;
+    bottom: 10px;
+}
+
+.extra-elements {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.extra-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    width: 11vw;
+    margin-bottom: 30px;
+
+}
+
+.extra-checkbox {
+    margin-right: 10px;
+}
+
+.customer-note {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.customer-note input {
+    all: unset;
+    height: 40px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #5F5F5F;
+    transition: 0.3s color ease;
+}
+
+.customer-note input:hover {
+    border: 2px solid #5F5F5F;
+}
+
+.customer-note input:focus {
+    border: 2px solid #333;
+}
+
+.order-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 80px;
+}
+
+.pizza-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.pizza-count p {
+    border: 1px solid #5f5f5f3f;
+    height: 48px;
+    width: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pizza-count button {
+    background-color: #FDC913;
+    border: none;
+    height: 50px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.pizza-count button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pizza-count button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.order-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+    border: 1px solid #5f5f5f3f;
+    width: 300px;
+    height: 110px;
+    padding: 50px 50px;
+}
+
+.order-details h4 {
+    color: #333;
+}
+
+.extra-price,
+.total-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.extra-price {
+    color: #5F5F5F;
+}
+
+.total-price {
+    color: #CE2829;
+}
+
+.order-price button {
+    position: relative;
+    bottom: 3px;
+    width: 100%;
+    height: 60px;
+    background-color: #FDC913;
+    border-radius: 5px;
+    border: none;
+    color: #333;
+    font-size: 22px;
+    font-weight: 600;
 }

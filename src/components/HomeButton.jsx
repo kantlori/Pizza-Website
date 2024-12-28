@@ -1,16 +1,11 @@
-import React from 'react'
+import React from "react";
 
-function HomeButton() {
-
-    function homeButtonOnClick() {
-
-    }
-
+function HomeButton({ onClick }) {
     return (
-        <>
-            <button className='homebutton'>ACIKTIM</button>
-        </>
-    )
+        <button className="homebutton" onClick={onClick}>
+            ACIKTIM
+        </button>
+    );
 }
 
-export default HomeButton
+export default HomeButton;

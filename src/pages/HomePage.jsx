@@ -1,19 +1,19 @@
-import React from 'react'
-import "../css/HomePage.css"
-import HomeButton from '../components/HomeButton'
+import React from "react";
+import "../css/HomePage.css";
+import HomeButton from "../components/HomeButton";
+import "../../images/iteration-1-images/logo.svg"
 
-function HomePage() {
+function HomePage({ onButtonClick }) {
   return (
-    <>
-      <div className='homepage'>
-        <div className='homepage-text'>
-          <h1>Teknolojik Yemekler</h1>
-          <h4>KOD ACIKTIRIR PİZZA, DOYURUR</h4>
-          <HomeButton />
-        </div>
+    <div className="homepage">
+      <div className="homepage-text">
+        <img src="../../images/iteration-1-images/logo.svg" alt="" />
+        <h4>KOD ACIKTIRIR PİZZA, DOYURUR</h4>
+        <HomeButton onClick={onButtonClick} />
       </div>
-    </>
-  )
+
+    </div>
+  );
 }
 
-export default HomePage 
+export default HomePage;

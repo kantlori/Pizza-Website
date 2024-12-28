@@ -1,16 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import HomePage from './pages/HomePage'
-import OrderPage from './pages/OrderPage'
+import React, { useState } from "react";
+import HomePage from "./pages/HomePage";
+import OrderPage from "./pages/OrderPage"
 
 function App() {
-
+  const [showOrderPage, setShowOrderPage] = useState(false);
 
   return (
-    <>
-      <OrderPage />
-    </>
-  )
+    <div>
+      {!showOrderPage ? (
+        <HomePage onButtonClick={() => setShowOrderPage(true)} />
+      ) : (
+        <OrderPage onBack={() => setShowOrderPage(false)} />
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
