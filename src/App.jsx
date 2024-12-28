@@ -1,16 +1,31 @@
 import React, { useState } from "react";
 import HomePage from "./pages/HomePage";
-import OrderPage from "./pages/OrderPage"
+import OrderPage from "./pages/OrderPage";
+import SuccessPage from "./pages/SuccessPage";
 
 function App() {
   const [showOrderPage, setShowOrderPage] = useState(false);
+  const [showSuccessPage, setShowSuccessPage] = useState(false);
 
   return (
     <div>
-      {!showOrderPage ? (
+      {!showOrderPage && !showSuccessPage && (
         <HomePage onButtonClick={() => setShowOrderPage(true)} />
-      ) : (
-        <OrderPage onBack={() => setShowOrderPage(false)} />
+      )}
+      {showOrderPage && !showSuccessPage && (
+        <OrderPage
+          onBack={() => setShowOrderPage(false)}
+          onSuccess={() => {
+            setShowOrderPage(false);
+            setShowSuccessPage(true);
+          }}
+        />
+      )}
+      {showSuccessPage && (
+        <SuccessPage onBack={() => {
+          setShowSuccessPage(false);
+          setShowOrderPage(false);
+        }} />
       )}
     </div>
   );

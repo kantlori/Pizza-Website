@@ -5,7 +5,7 @@ import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
 import "../css/OrderPage.css"
 import "../../images/iteration-1-images/logo.svg"
 
-function OrderPage({ onBack }) {
+function OrderPage({ onBack, onSuccess }) {
     const [order, setOrder] = useState({
         username: "",
         pizzaCount: 1,
@@ -55,13 +55,14 @@ function OrderPage({ onBack }) {
                 totalPrice,
             });
             console.log('Order submitted:', response.data);
+            onSuccess();
         } catch (error) {
             console.error('Error submitting order:', error);
         }
     };
 
     return (
-        <div >
+        <div>
             <header>
                 <img src="../../images/iteration-1-images/logo.svg" alt="" />
                 <div className="order-header-buttons">
