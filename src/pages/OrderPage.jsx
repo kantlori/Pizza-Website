@@ -155,9 +155,9 @@ function OrderPage({ onBack, onSuccess }) {
                         <Label>İsminiz</Label>
                         <Input
                             type="text"
-                            placeholder="Adınız..."
+                            placeholder="Adınız... (Zorunlu)"
                             value={order.username}
-                            onChange={(e) => updateOrder('username', e.target.value)}
+                            onChange={(e) => updateOrder('username', e.target.value.toUpperCase())}
                             style={{ width: "50%" }} />
                         <Label>Sipariş Notu</Label>
                         <Input
@@ -190,7 +190,7 @@ function OrderPage({ onBack, onSuccess }) {
                             <Button
                                 color="primary"
                                 onClick={handleSubmit}
-                                disabled={order.selectedToppings.length < 4}
+                                disabled={order.selectedToppings.length < 4 || order.username.length < 2}
                             >
                                 Sipariş Ver
                             </Button>
@@ -198,7 +198,7 @@ function OrderPage({ onBack, onSuccess }) {
                     </div>
                 </Form>
             </section>
-        </div>
+        </div >
     );
 }
 
