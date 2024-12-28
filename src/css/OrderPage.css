@@ -227,7 +227,6 @@ Form {
     padding: 8px 12px;
     border-radius: 5px;
     border: 1px solid #5F5F5F;
-    transition: 0.3s color ease;
 }
 
 .customer-note input:hover {
@@ -269,6 +268,7 @@ Form {
     height: 50px;
     width: 40px;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .pizza-count button:first-child {
@@ -328,13 +328,17 @@ Form {
     color: #333;
     font-size: 22px;
     font-weight: 600;
-    transform: 0.3s transform ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.order-price button:hover {
-    transform: scale(1.01);
-    background-color: #fdca13de;
+
+
+.order-price button:hover,
+.pizza-count button:hover {
+    transform: scale(1.003);
+    background-color: #fdca13ee;
     cursor: pointer;
+    box-shadow: 0.4px 0.4px #5F5F5F;
 }
 
 .order-price button:disabled {
