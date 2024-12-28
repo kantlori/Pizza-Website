@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import pizzaData from '../fakeData';
-import { Form, FormGroup, Label, Button, Input, Container } from 'reactstrap';
+import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
 import "../css/OrderPage.css"
 import "../../images/iteration-1-images/logo.svg"
 
 function OrderPage({ onBack }) {
     const [order, setOrder] = useState({
+        username: "",
         pizzaCount: 1,
         selectedSize: "orta",
         selectedDough: "normal",
@@ -149,6 +150,13 @@ function OrderPage({ onBack }) {
                         </div>
                     </FormGroup>
                     <FormGroup className='customer-note'>
+                        <Label>İsminiz</Label>
+                        <Input
+                            type="text"
+                            placeholder="Siparişine eklemek istediğin bir not var mı?"
+                            value={order.username}
+                            onChange={(e) => updateOrder('username', e.target.value)}
+                            style={{ width: "50%" }} />
                         <Label>Sipariş Notu</Label>
                         <Input
                             type="text"
