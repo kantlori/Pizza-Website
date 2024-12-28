@@ -1,0 +1,161 @@
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #CE2829;
+    height: 160px;
+}
+
+.order-header-buttons {
+    align-self: flex-start;
+}
+
+header h1 {
+    align-self: center;
+    font-family: "Barlow", serif;
+    font-size: 36px;
+    letter-spacing: -0.05em;
+    color: #fff
+}
+
+section {
+    padding: 0px 32vw;
+}
+
+.pizza-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    gap: 30px;
+    margin: 50px auto;
+    font-family: "Barlow", serif;
+}
+
+.pizza-info h4 {
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: 0.01em;
+}
+
+.pizza-info p:last-child {
+    color: #5F5F5F;
+    line-height: 25px;
+    font-size: 14px;
+}
+
+.pizza-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pizza-details p {
+    font-size: 28px;
+    font-weight: 620;
+}
+
+.rateNreview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3vw;
+    color: #5F5F5F;
+}
+
+.rateNreview p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+Form {
+    width: 100%;
+}
+
+.pizza-sizes {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 55%
+}
+
+.dough-size {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 300px;
+}
+
+.dough-header {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.dough-option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 10px;
+    color: #333;
+}
+
+.dough-option input {
+    width: 20px;
+    height: 20px;
+}
+
+.dough-option input[type="radio"] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background-color: #fff;
+}
+
+.dough-thickness {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    justify-content: flex-start;
+    align-items: flex-start;
+    letter-spacing: 0.02em;
+}
+
+.dough-thickness select {
+    width: 140px;
+    text-align: center;
+    border-color: #5F5F5F;
+    transition: 0.3s color ease;
+    border-radius: 5px;
+    appearance: none;
+    padding: 4px;
+    border: 2px solid #5F5F5F;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.dough-thickness select:focus {
+    border-color: #333;
+    border: 1px solid #333;
+    outline: none;
+    padding: 4px;
+}
+
+.dough-thickness option {
+    border-color: #5F5F5F;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dough-thickness select::-ms-expand {
+    display: none;
+}

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import pizzaData from '../fakeData';
-import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
+import { Form, FormGroup, Label, Button, Input, Container } from 'reactstrap';
+import "../css/OrderPage.css"
 
 function OrderPage() {
     const [order, setOrder] = useState({
@@ -50,10 +51,10 @@ function OrderPage() {
     };
 
     return (
-        <>
+        <div >
             <header>
                 <h1>Teknolojik Yemekler</h1>
-                <div className="order-header-button">
+                <div className="order-header-buttons">
                     <button>Anasayfa</button>
                     <button>Seçenekler</button>
                     <button>Sipariş Oluştur</button>
@@ -64,31 +65,59 @@ function OrderPage() {
                     <h4>{pizzaData[6].name}</h4>
                     <div className="pizza-details">
                         <p>{pizzaPrice}₺</p>
-                        <p>{pizzaData[6].rating}</p>
-                        <p>{pizzaData[6].reviewCount}</p>
+                        <div className="rateNreview">
+                            <p>{pizzaData[6].rating}</p>
+                            <p>({pizzaData[6].reviewCount})</p>
+                        </div>
                     </div>
                     <p>{pizzaData[6].description}</p>
                 </div>
                 <Form>
                     <FormGroup className="pizza-sizes">
-                        <Label>Boyut Seç</Label>
-                        <div>
-                            <input type="radio" name="boyut" value="kucuk" id="kucuk" checked={order.selectedSize === "kucuk"} onChange={(e) => updateOrder('selectedSize', e.target.value)} />
-                            <Label htmlFor="kucuk">Küçük</Label>
-
-                            <input type="radio" name="boyut" value="orta" id="orta" checked={order.selectedSize === "orta"} onChange={(e) => updateOrder('selectedSize', e.target.value)} />
-                            <Label htmlFor="orta">Orta</Label>
-
-                            <input type="radio" name="boyut" value="buyuk" id="buyuk" checked={order.selectedSize === "buyuk"} onChange={(e) => updateOrder('selectedSize', e.target.value)} />
-                            <Label htmlFor="buyuk">Büyük</Label>
+                        <div className="dough-size">
+                            <Label className='dough-header'>Boyut Seç</Label>
+                            <div className="dough-option">
+                                <input
+                                    type="radio"
+                                    name="boyut"
+                                    value="kucuk"
+                                    id="kucuk"
+                                    checked={order.selectedSize === "kucuk"}
+                                    onChange={(e) => updateOrder('selectedSize', e.target.value)}
+                                />
+                                <Label htmlFor="kucuk">Küçük</Label>
+                            </div>
+                            <div className="dough-option">
+                                <input
+                                    type="radio"
+                                    name="boyut"
+                                    value="orta"
+                                    id="orta"
+                                    checked={order.selectedSize === "orta"}
+                                    onChange={(e) => updateOrder('selectedSize', e.target.value)}
+                                />
+                                <Label htmlFor="orta">Orta</Label>
+                            </div>
+                            <div className="dough-option">
+                                <input
+                                    type="radio"
+                                    name="boyut"
+                                    value="buyuk"
+                                    id="buyuk"
+                                    checked={order.selectedSize === "buyuk"}
+                                    onChange={(e) => updateOrder('selectedSize', e.target.value)}
+                                />
+                                <Label htmlFor="buyuk">Büyük</Label>
+                            </div>
                         </div>
-
-                        <Label>Hamur Seç</Label>
-                        <select name="hamur" value={order.selectedDough} onChange={(e) => updateOrder('selectedDough', e.target.value)}>
-                            <option value="ince">İnce</option>
-                            <option value="normal">Normal</option>
-                            <option value="kalin">Kalın</option>
-                        </select>
+                        <div className='dough-thickness'>
+                            <Label>Hamur Seç</Label>
+                            <select name="hamur" value={order.selectedDough} onChange={(e) => updateOrder('selectedDough', e.target.value)}>
+                                <option value="ince">İnce</option>
+                                <option value="normal">Normal</option>
+                                <option value="kalin">Kalın</option>
+                            </select>
+                        </div>
                     </FormGroup>
                     <FormGroup>
                         <h6>Ek Malzemeler</h6>
@@ -139,7 +168,7 @@ function OrderPage() {
                     </FormGroup>
                 </Form>
             </section>
-        </>
+        </div>
     );
 }
 
