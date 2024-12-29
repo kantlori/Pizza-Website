@@ -66,9 +66,9 @@ function OrderPage({ onBack, onSuccess }) {
     return (
         <div>
             <header>
-                <img src="../../images/iteration-1-images/logo.svg" alt="" />
+                <img src="../../images/iteration-1-images/logo.svg" alt="" data-cy="header-logo" />
                 <div className="order-header-buttons">
-                    <button onClick={onBack}>Anasayfa</button>
+                    <button onClick={onBack} data-cy="returnhome-button">Anasayfa</button>
                     <p>-</p>
                     <button>Seçenekler</button>
                     <p>-</p>
@@ -77,15 +77,15 @@ function OrderPage({ onBack, onSuccess }) {
             </header>
             <section>
                 <div className="pizza-info">
-                    <h4>{pizzaData[pizzaIndex].name}</h4>
+                    <h4 data-cy="pizza-name">{pizzaData[pizzaIndex].name}</h4>
                     <div className="pizza-details">
-                        <p>{pizzaPrice}₺</p>
-                        <div className="rateNreview">
+                        <p data-cy="pizza-price">{pizzaPrice}₺</p>
+                        <div className="rateNreview" data-cy="pizza-rate-review">
                             <p>{pizzaData[pizzaIndex].rating}</p>
                             <p>({pizzaData[pizzaIndex].reviewCount})</p>
                         </div>
                     </div>
-                    <p>{pizzaData[pizzaIndex].description}</p>
+                    <p data-cy="pizza-description">{pizzaData[pizzaIndex].description}</p>
                 </div>
                 <Form>
                     <FormGroup className="pizza-sizes" data-cy="pizza-sizes">
