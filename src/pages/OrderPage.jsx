@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import pizzaData from '../fakeData';
 import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
-import "../css/OrderPage.css"
-import "../../images/iteration-1-images/logo.svg"
-
+import "../css/OrderPage.css";
+import "../../images/iteration-1-images/logo.svg";
 
 function OrderPage({ onBack, onSuccess }) {
-    const pizzaIndex = Math.floor(Math.random() * pizzaData.length)
+    const [pizzaIndex, setPizzaIndex] = useState(null);
     const [order, setOrder] = useState({
         username: "",
         pizzaCount: 1,
@@ -15,8 +14,22 @@ function OrderPage({ onBack, onSuccess }) {
         selectedDough: "normal",
         selectedToppings: [],
         orderNote: "",
-        pizzaName: pizzaData[pizzaIndex].name
+        pizzaName: "",
     });
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        const randomIndex = Math.floor(Math.random() * pizzaData.length);
+        setPizzaIndex(randomIndex);
+        setOrder((prevOrder) => ({
+            ...prevOrder,
+            pizzaName: pizzaData[randomIndex].name,
+        }));
+    }, []);
+
+    if (pizzaIndex === null) {
+        return <p>Loading...</p>;
+    }
 
     const pizzaPrice = pizzaData[pizzaIndex].price;
 
@@ -33,14 +46,13 @@ function OrderPage({ onBack, onSuccess }) {
         setOrder((prevOrder) => {
             const isSelected = prevOrder.selectedToppings.includes(value);
             if (!isSelected && prevOrder.selectedToppings.length >= 10) {
-                alert("En fazla 10 malzeme seçebilirsiniz.");
+                setErrorMessage("En fazla 10 malzeme seçebilirsiniz.");
                 return prevOrder;
             }
-
             const selectedToppings = isSelected
                 ? prevOrder.selectedToppings.filter((topping) => topping !== value)
                 : [...prevOrder.selectedToppings, value];
-
+            setErrorMessage("");
             return { ...prevOrder, selectedToppings };
         });
     };
@@ -142,7 +154,9 @@ function OrderPage({ onBack, onSuccess }) {
                         </div>
                     </FormGroup>
                     <FormGroup className='extras' data-cy="extras">
-                        <Label>Ek Malzemeler</Label>
+                        <Label className='extras-header'>Ek Malzemeler</Label>
+                        <p>(En az 4 malzeme seçmelisiniz)</p>
+                        {errorMessage && <p className="error-message" style={{ color: "#e91212" }}>*{errorMessage}</p>}
                         <div className='extra-elements' data-cy="extra-elements">
                             {['Pepperoni', 'Sosis', 'Jambon', 'Tavuk', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalapeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping) => (
                                 <Label key={topping} className='extra-item' data-cy={`extra-item-${topping}`}>
@@ -181,9 +195,9 @@ function OrderPage({ onBack, onSuccess }) {
                     <div className='order-control' data-cy="order-control">
                         <FormGroup>
                             <div className="pizza-count" data-cy="pizza-count">
-                                <Button color="warning" onClick={() => updateOrder('pizzaCount', Math.max(1, order.pizzaCount - 1))} data-cy="decrease-pizza-count">-</Button>
+                                <Button onClick={() => updateOrder('pizzaCount', Math.max(1, order.pizzaCount - 1))} data-cy="decrease-pizza-count">-</Button>
                                 <p data-cy="pizza-count-value">{order.pizzaCount}</p>
-                                <Button color="warning" onClick={() => updateOrder('pizzaCount', order.pizzaCount + 1)} data-cy="increase-pizza-count">+</Button>
+                                <Button onClick={() => updateOrder('pizzaCount', order.pizzaCount + 1)} data-cy="increase-pizza-count">+</Button>
                             </div>
                         </FormGroup>
                         <FormGroup className='order-price' data-cy="order-price">
@@ -207,9 +221,8 @@ function OrderPage({ onBack, onSuccess }) {
                         </FormGroup>
                     </div>
                 </Form>
-
             </section>
-        </div >
+        </div>
     );
 }
 

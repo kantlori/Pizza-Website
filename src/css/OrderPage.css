@@ -112,7 +112,8 @@ Form {
 .dough-header,
 .extras h6,
 .customer-note label,
-.order-details h4 {
+.order-details h4,
+.extras-header {
     font-size: 24px;
     font-weight: 600;
 }
@@ -187,10 +188,23 @@ Form {
     gap: 30px;
 }
 
-.extras p {
+.extra-item p {
     color: #333;
     position: relative;
     bottom: 10px;
+}
+
+.error-message {
+    font-size: 16px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.extras p {
+    color: #5F5F5F;
+    font-size: 14px;
+    position: relative;
+    bottom: 15px;
 }
 
 .extra-elements {
@@ -313,6 +327,7 @@ Form {
     color: #5F5F5F;
 }
 
+
 .total-price {
     color: #CE2829;
 }
@@ -330,8 +345,6 @@ Form {
     font-weight: 600;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
-
 
 .order-price button:hover,
 .pizza-count button:hover {
