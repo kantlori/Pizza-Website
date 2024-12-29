@@ -1,0 +1,21 @@
+@media (max-width: 768px) {
+    header img {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .order-header-buttons {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: center;
+        align-items: flex-end;
+        height: 150px;
+        top: 0;
+        left: 30px;
+    }
+
+    section {
+        padding: 0px 5vw;
+    }
+
+}

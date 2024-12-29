@@ -3,6 +3,7 @@ import axios from 'axios';
 import pizzaData from '../fakeData';
 import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
 import "../css/OrderPage.css";
+import "../css/Media.css";
 import "../../images/iteration-1-images/logo.svg";
 
 function OrderPage({ onBack, onSuccess }) {
