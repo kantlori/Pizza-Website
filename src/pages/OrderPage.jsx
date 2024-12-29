@@ -192,7 +192,7 @@ function OrderPage({ onBack, onSuccess }) {
                             <Button
                                 color="primary"
                                 onClick={handleSubmit}
-                                disabled={order.selectedToppings.length < 4 || order.username.length < 2}
+                                disabled={order.selectedToppings.length < 4 || order.username.length < 3}
                             >
                                 Sipariş Ver
                             </Button>
