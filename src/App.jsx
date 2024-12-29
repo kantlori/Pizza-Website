@@ -8,7 +8,7 @@ function App() {
   const [showSuccessPage, setShowSuccessPage] = useState(false);
 
   return (
-    <div>
+    <div data-cy="app">
       {!showOrderPage && !showSuccessPage && (
         <HomePage onButtonClick={() => setShowOrderPage(true)} />
       )}

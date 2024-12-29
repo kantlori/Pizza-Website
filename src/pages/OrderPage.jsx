@@ -88,10 +88,10 @@ function OrderPage({ onBack, onSuccess }) {
                     <p>{pizzaData[pizzaIndex].description}</p>
                 </div>
                 <Form>
-                    <FormGroup className="pizza-sizes">
-                        <div className="dough-size">
+                    <FormGroup className="pizza-sizes" data-cy="pizza-sizes">
+                        <div className="dough-size" data-cy="dough-size">
                             <Label className='dough-header'>Boyut Seç</Label>
-                            <div className="dough-option">
+                            <div className="dough-option" data-cy="dough-option-small">
                                 <input
                                     type="radio"
                                     name="boyut"
@@ -99,10 +99,11 @@ function OrderPage({ onBack, onSuccess }) {
                                     id="kucuk"
                                     checked={order.selectedSize === "kucuk"}
                                     onChange={(e) => updateOrder('selectedSize', e.target.value)}
+                                    data-cy="size-small"
                                 />
                                 <Label htmlFor="kucuk">Küçük</Label>
                             </div>
-                            <div className="dough-option">
+                            <div className="dough-option" data-cy="dough-option-medium">
                                 <input
                                     type="radio"
                                     name="boyut"
@@ -110,10 +111,11 @@ function OrderPage({ onBack, onSuccess }) {
                                     id="orta"
                                     checked={order.selectedSize === "orta"}
                                     onChange={(e) => updateOrder('selectedSize', e.target.value)}
+                                    data-cy="size-medium"
                                 />
                                 <Label htmlFor="orta">Orta</Label>
                             </div>
-                            <div className="dough-option">
+                            <div className="dough-option" data-cy="dough-option-large">
                                 <input
                                     type="radio"
                                     name="boyut"
@@ -121,84 +123,91 @@ function OrderPage({ onBack, onSuccess }) {
                                     id="buyuk"
                                     checked={order.selectedSize === "buyuk"}
                                     onChange={(e) => updateOrder('selectedSize', e.target.value)}
+                                    data-cy="size-large"
                                 />
                                 <Label htmlFor="buyuk">Büyük</Label>
                             </div>
                         </div>
-                        <div className='dough-thickness'>
+                        <div className='dough-thickness' data-cy="dough-thickness">
                             <Label>Hamur Seç</Label>
-                            <select name="hamur" value={order.selectedDough} onChange={(e) => updateOrder('selectedDough', e.target.value)}>
+                            <select
+                                name="hamur"
+                                value={order.selectedDough}
+                                onChange={(e) => updateOrder('selectedDough', e.target.value)}
+                                data-cy="dough-select">
                                 <option value="ince">İnce</option>
                                 <option value="normal">Normal</option>
                                 <option value="kalin">Kalın</option>
                             </select>
                         </div>
                     </FormGroup>
-                    <FormGroup className='extras'>
-                        <hpizzaIndex>Ek Malzemeler</hpizzaIndex>
-                        <p>En Fazla 10 malzeme seçebilirsiniz. 5₺ (En az 4 malzeme seçmelisiniz)</p>
-
-                        <div className='extra-elements'>
+                    <FormGroup className='extras' data-cy="extras">
+                        <Label>Ek Malzemeler</Label>
+                        <div className='extra-elements' data-cy="extra-elements">
                             {['Pepperoni', 'Sosis', 'Jambon', 'Tavuk', 'Soğan', 'Domates', 'Mısır', 'Sucuk', 'Jalapeno', 'Sarımsak', 'Biber', 'Ananas', 'Kabak'].map((topping) => (
-                                <Label key={topping} className='extra-item'>
+                                <Label key={topping} className='extra-item' data-cy={`extra-item-${topping}`}>
                                     <input
                                         type="checkbox"
                                         value={topping}
                                         checked={order.selectedToppings.includes(topping)}
                                         onChange={handleToppingChange}
                                         className='extra-checkbox'
+                                        data-cy={`extra-checkbox-${topping}`}
                                     />
                                     {topping.charAt(0).toUpperCase() + topping.slice(1)}
                                 </Label>
                             ))}
                         </div>
                     </FormGroup>
-                    <FormGroup className='customer-note'>
+                    <FormGroup className='customer-note' data-cy="customer-note">
                         <Label>İsminiz</Label>
                         <Input
                             type="text"
                             placeholder="Adınız... (Zorunlu)"
                             value={order.username}
                             onChange={(e) => updateOrder('username', e.target.value.toUpperCase())}
-                            style={{ width: "50%" }} />
+                            style={{ width: "50%" }}
+                            data-cy="username-input"
+                        />
                         <Label>Sipariş Notu</Label>
                         <Input
                             type="text"
                             placeholder="Siparişine eklemek istediğin bir not var mı?"
                             value={order.orderNote}
                             onChange={(e) => updateOrder('orderNote', e.target.value)}
+                            data-cy="order-note-input"
                         />
                     </FormGroup>
-                    <hr />
-                    <div className='order-control'>
+                    <div className='order-control' data-cy="order-control">
                         <FormGroup>
-                            <div className="pizza-count">
-                                <Button color="warning" onClick={() => updateOrder('pizzaCount', Math.max(1, order.pizzaCount - 1))}>-</Button>
-                                <p>{order.pizzaCount}</p>
-                                <Button color="warning" onClick={() => updateOrder('pizzaCount', order.pizzaCount + 1)}>+</Button>
+                            <div className="pizza-count" data-cy="pizza-count">
+                                <Button color="warning" onClick={() => updateOrder('pizzaCount', Math.max(1, order.pizzaCount - 1))} data-cy="decrease-pizza-count">-</Button>
+                                <p data-cy="pizza-count-value">{order.pizzaCount}</p>
+                                <Button color="warning" onClick={() => updateOrder('pizzaCount', order.pizzaCount + 1)} data-cy="increase-pizza-count">+</Button>
                             </div>
                         </FormGroup>
-
-                        <FormGroup className='order-price'>
+                        <FormGroup className='order-price' data-cy="order-price">
                             <div className="order-details">
                                 <h4>Sipariş Toplamı</h4>
                                 <div className="extra-price">
-                                    <p>Seçimler:</p> <p>{totalToppingPrice}₺</p>
+                                    <p>Seçimler:</p> <p data-cy="topping-price">{totalToppingPrice}₺</p>
                                 </div>
                                 <div className="total-price">
-                                    <p>Toplam:</p> <p>{totalPrice}₺</p>
+                                    <p>Toplam:</p> <p data-cy="total-price">{totalPrice}₺</p>
                                 </div>
                             </div>
                             <Button
                                 color="primary"
                                 onClick={handleSubmit}
                                 disabled={order.selectedToppings.length < 4 || order.username.length < 3}
+                                data-cy="submit-order"
                             >
                                 Sipariş Ver
                             </Button>
                         </FormGroup>
                     </div>
                 </Form>
+
             </section>
         </div >
     );
