@@ -5,7 +5,9 @@ import { Form, FormGroup, Label, Button, Input } from 'reactstrap';
 import "../css/OrderPage.css"
 import "../../images/iteration-1-images/logo.svg"
 
+
 function OrderPage({ onBack, onSuccess }) {
+    const pizzaIndex = Math.floor(Math.random() * pizzaData.length)
     const [order, setOrder] = useState({
         username: "",
         pizzaCount: 1,
@@ -13,10 +15,10 @@ function OrderPage({ onBack, onSuccess }) {
         selectedDough: "normal",
         selectedToppings: [],
         orderNote: "",
-        pizzaName: pizzaData[6].name
+        pizzaName: pizzaData[pizzaIndex].name
     });
 
-    const pizzaPrice = pizzaData[6].price;
+    const pizzaPrice = pizzaData[pizzaIndex].price;
 
     const updateOrder = (key, value) => {
         setOrder((prevOrder) => ({
@@ -75,15 +77,15 @@ function OrderPage({ onBack, onSuccess }) {
             </header>
             <section>
                 <div className="pizza-info">
-                    <h4>{pizzaData[6].name}</h4>
+                    <h4>{pizzaData[pizzaIndex].name}</h4>
                     <div className="pizza-details">
                         <p>{pizzaPrice}₺</p>
                         <div className="rateNreview">
-                            <p>{pizzaData[6].rating}</p>
-                            <p>({pizzaData[6].reviewCount})</p>
+                            <p>{pizzaData[pizzaIndex].rating}</p>
+                            <p>({pizzaData[pizzaIndex].reviewCount})</p>
                         </div>
                     </div>
-                    <p>{pizzaData[6].description}</p>
+                    <p>{pizzaData[pizzaIndex].description}</p>
                 </div>
                 <Form>
                     <FormGroup className="pizza-sizes">
@@ -133,7 +135,7 @@ function OrderPage({ onBack, onSuccess }) {
                         </div>
                     </FormGroup>
                     <FormGroup className='extras'>
-                        <h6>Ek Malzemeler</h6>
+                        <hpizzaIndex>Ek Malzemeler</hpizzaIndex>
                         <p>En Fazla 10 malzeme seçebilirsiniz. 5₺ (En az 4 malzeme seçmelisiniz)</p>
 
                         <div className='extra-elements'>
