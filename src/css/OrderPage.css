@@ -255,6 +255,7 @@ Form {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    margin-top: 50px;
     margin-bottom: 80px;
 }
 
