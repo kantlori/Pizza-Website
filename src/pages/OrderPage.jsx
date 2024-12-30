@@ -6,6 +6,7 @@ import PizzaForm from '../components/PizzaForm';
 import PizzaInfo from '../components/PizzaInfo';
 import Header from '../components/Header';
 import '../css/OrderPage.css';
+import '../css/Media.css';
 
 function OrderPage({ onBack, onSuccess }) {
     const [pizzaIndex, setPizzaIndex] = useState(null);

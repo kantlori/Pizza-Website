@@ -1,21 +1,88 @@
-@media (max-width: 768px) {
-    header img {
-        width: 100%;
-        max-width: 200px;
+@media screen and (max-width: 768px) {
+    .homepage {
+        background-position: 50% 50%;
+    }
+
+    .homepage-text h4 {
+        font-size: 50px;
+        width: 80%;
+    }
+
+    .homepage-text {
+        height: 60%;
+        gap: 20px;
     }
 
     .order-header-buttons {
-        flex-direction: row;
-        justify-content: flex-start;
-        text-align: center;
-        align-items: flex-end;
-        height: 150px;
-        top: 0;
-        left: 30px;
+        position: static;
+        margin-top: 10px;
+        gap: 5px;
+    }
+
+    .order-header-buttons button {
+        font-size: 14px;
     }
 
     section {
-        padding: 0px 5vw;
+        padding: 0 10px;
     }
 
+    .pizza-info h4 {
+        font-size: 18px;
+    }
+
+    .pizza-details p {
+        font-size: 24px;
+    }
+
+    .rateNreview p {
+        font-size: 14px;
+    }
+
+    .dough-size {
+        max-width: 100%;
+    }
+
+    .pizza-sizes {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .dough-thickness select {
+        width: 100%;
+    }
+
+    .extras .extra-elements {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .extra-item {
+        width: 100%;
+    }
+
+    .customer-note input {
+        width: 90%;
+    }
+
+    .order-control {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .pizza-count p {
+        font-size: 16px;
+    }
+
+    .order-price button {
+        font-size: 18px;
+    }
+
+    .success-message p {
+        font-size: 40px;
+    }
+
+    .success-button button {
+        width: 120px;
+    }
 }
