@@ -7,6 +7,32 @@ header {
     background-color: #CE2829;
     height: 160px;
     font-family: "Barlow", serif;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    transition: all 0.4s ease;
+}
+
+header.shrink {
+    height: 80px;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header.shrink img {
+    width: 180px;
+    height: 180px;
+    margin-left: 32vw;
+    transition: all 0.4s ease;
+}
+
+header.shrink .order-header-buttons {
+    top: 30px;
+    left: 50vw;
+    transition: all 0.4s ease;
 }
 
 .order-header-buttons {
