@@ -9,7 +9,7 @@ function ExpressCards({ item }) {
     return (
         <div className="express-menu-cards">
             {item.map((product, index) => (
-                <ExpressCard key={index} item={product} />
+                item && <ExpressCard key={index} item={product} />
             ))}
         </div>
     );

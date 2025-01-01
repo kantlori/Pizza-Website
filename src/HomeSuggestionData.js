@@ -11,8 +11,7 @@ export const suggestionCards = [{
     image: `../images/iteration-2-images/cta/kart-2.png`,
 }, {
     id: 1002,
-    name: "Reduce Spicy Veggie",
-    header: "Özel Lezzetus",
+    name: "Çooook hızlı npm gibi kurye",
     image: `../images/iteration-2-images/cta/kart-3.png`,
 }]
 
