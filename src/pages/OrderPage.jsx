@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import pizzaData from '../fakeData';
-import OrderSummary from '../components/OrderSummary';
-import PizzaForm from '../components/PizzaForm';
-import PizzaInfo from '../components/PizzaInfo';
-import Header from '../components/Header';
-import '../css/OrderPage.css';
-import '../css/Media.css';
+import PizzaForm from '../components/Order/PizzaForm';
+import OrderSummary from '../components/Order/OrderSummary';
+import PizzaInfo from '../components/Order/PizzaInfo';
+import pizzaData from '../fakeData.js';
+import './OrderPage.css';
+import Header from '../components/Order/Header.jsx';
+
 
 function OrderPage({ onBack, onSuccess }) {
     const [pizzaIndex, setPizzaIndex] = useState(null);

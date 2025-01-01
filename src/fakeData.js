@@ -78,5 +78,126 @@ const pizzaData = [
     }
 ];
 
+export const ramenData = [
+    {
+        name: "Spicy Miso Ramen",
+        price: 40,
+        description: "Acılı miso çorbası, taze sebzeler, yumuşacık ramen noodle'ları ve haşlanmış yumurta ile dolu bir deneyim. Her yudumda baharatların ve misonun birleşimi sizi sarhoş ederken, ramenin dokusu da mükemmel bir uyum içinde. Bu ramen, acıyı sevenler için ideal.",
+        rating: 4.6,
+        reviewCount: 250
+    },
+    {
+        name: "Tonkotsu Ramen",
+        price: 50,
+        description: "Zengin tonkotsu çorbası, ince dilimlenmiş domuz eti, taze soğan ve narin ramen noodle'larıyla hazırlanan bu ramen, Japon mutfağının en sevilen lezzetlerinden biri. Her lokma, sizi uzak doğuya götüren bir tat yolculuğu sunuyor.",
+        rating: 4.8,
+        reviewCount: 300
+    },
+    {
+        name: "Shoyu Ramen",
+        price: 45,
+        description: "Soya sosu bazlı çorba, yumuşak ramen, haşlanmış yumurta ve taze sebzelerle hazırlanan Shoyu ramen, Japon mutfağının en geleneksel ve lezzetli tariflerinden biri. Bu ramen, klasik bir tat arayanlar için mükemmel.",
+        rating: 4.5,
+        reviewCount: 220
+    }
+];
+
+export const burgerData = [
+    {
+        name: "Cheeseburger Deluxe",
+        price: 35,
+        description: "Sıcak, yumuşak ekmek arasına konmuş lezzetli bir hamburger köftesi, erimiş cheddar peyniri, taze marullarla servis edilen bu cheeseburger, klasik fast food tatlarını sevenler için ideal. Yanında patates kızartmasıyla servis edilir.",
+        rating: 4.7,
+        reviewCount: 350
+    },
+    {
+        name: "Bacon BBQ Burger",
+        price: 38,
+        description: "Bacon ve barbekü sosunun birleşimiyle hazırlanan bu burger, tatların mükemmel bir uyum içinde dans etmesini sağlıyor. Karamelize soğan, taze marul ve domatesle zenginleştirilen burger, her lokmada mükemmel bir tat sunuyor.",
+        rating: 4.6,
+        reviewCount: 280
+    },
+    {
+        name: "Veggie Burger",
+        price: 30,
+        description: "Vejetaryenler için mükemmel bir seçenek! Nohut ve mercimek bazlı burger köftesi, taze sebzeler ve ev yapımı soslarla servis ediliyor. Hem sağlıklı hem de lezzetli bir alternatif arayanlar için ideal.",
+        rating: 4.3,
+        reviewCount: 200
+    }
+];
+
+export const frenchFriesData = [
+    {
+        name: "Crispy French Fries",
+        price: 15,
+        description: "Altın rengi ve çıtır çıtır patates kızartmaları. Her lokma, taze ve sıcak, dışı çıtır içi yumuşak. Yanında daldırmak için ev yapımı ketçap ve mayonez sosları ile servis edilir.",
+        rating: 4.8,
+        reviewCount: 180
+    },
+    {
+        name: "Loaded French Fries",
+        price: 20,
+        description: "Crispy french fries üzerine erimiş cheddar peyniri, bacon parçaları ve yeşil soğan eklenerek hazırlanan bu patates kızartması, tam anlamıyla bir lezzet bombası. Yanında sızma zeytinyağı ve yoğurt sosu ile sunulur.",
+        rating: 4.7,
+        reviewCount: 220
+    },
+    {
+        name: "Garlic Parmesan Fries",
+        price: 18,
+        description: "Sarımsak ve parmesan peynirinin zengin birleşimiyle tatlandırılmış patates kızartmaları. Her lokma, sizi hem tuzlu hem de hafif acılı bir lezzet patlamasıyla karşılıyor. Yanında tatlı eklenmiş acı sos ile servis edilir.",
+        rating: 4.6,
+        reviewCount: 160
+    }
+];
+
+export const fastFoodData = [
+    {
+        name: "Classic Hot Dog",
+        price: 25,
+        description: "İçinde lezzetli sosis, taze ekmek ve üzerine eklenmiş çeşitli garnitürlerle hazırlanan bu hot dog, klasik fast food sevenler için mükemmel. Yanında soğan halkaları ile servis edilir.",
+        rating: 4.4,
+        reviewCount: 200
+    },
+    {
+        name: "Fried Chicken Tenders",
+        price: 28,
+        description: "Altın renginde kızarmış tavuk tenders, çıtır dışı ve yumuşak içiyle harika bir atıştırmalık. Yanında tatlı eklenmiş acı sos ve ev yapımı ranch sosu ile sunulur.",
+        rating: 4.5,
+        reviewCount: 150
+    },
+    {
+        name: "Chicken Nuggets",
+        price: 22,
+        description: "Küçük, çıtır çıtır tavuk nugget'ları, lezzetli ve doyurucu. Yanında ev yapımı barbekü sosu ile servis edilir.",
+        rating: 4.3,
+        reviewCount: 180
+    }
+];
+
+export const softDrinksData = [
+    {
+        name: "Coca-Cola",
+        price: 12,
+        description: "Klasik Coca-Cola, serinletici ve tatlı bir içecek. Her yudumda karamelize şeker ve gazın mükemmel birleşimiyle kendinizi taze hissedeceksiniz.",
+        rating: 4.7,
+        reviewCount: 400
+    },
+    {
+        name: "Sprite",
+        price: 12,
+        description: "Limonlu gazlı içecek, ferahlatıcı ve hafif asidik bir tat. Sıcak yaz günlerinde mükemmel bir seçenek.",
+        rating: 4.6,
+        reviewCount: 350
+    },
+    {
+        name: "Fanta",
+        price: 12,
+        description: "Portakal aromalı gazlı içecek, tatlı ve meyvemsi bir tat deneyimi sunar. Gençlerin favorisi.",
+        rating: 4.5,
+        reviewCount: 320
+    }
+];
+
+
 
 export default pizzaData;
