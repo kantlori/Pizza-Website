@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import PizzaForm from '../components/Order/PizzaForm';
 import OrderSummary from '../components/Order/OrderSummary';
 import PizzaInfo from '../components/Order/PizzaInfo';
-import pizzaData from '../fakeData.js';
 import './OrderPage.css';
 import Header from '../components/Order/Header.jsx';
 
-
-function OrderPage({ onBack, onSuccess }) {
-    const [pizzaIndex, setPizzaIndex] = useState(null);
+function OrderPage({ onBack, onSuccess, selectedProduct }) {
     const [order, setOrder] = useState({
         username: "",
         pizzaCount: 1,
@@ -17,45 +13,25 @@ function OrderPage({ onBack, onSuccess }) {
         selectedDough: "normal",
         selectedToppings: [],
         orderNote: "",
-        pizzaName: "",
+        pizzaName: selectedProduct ? selectedProduct.name : "",
     });
-    const [errorMessage, setErrorMessage] = useState("");
 
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * pizzaData.length);
-        setPizzaIndex(randomIndex);
-        setOrder((prevOrder) => ({
-            ...prevOrder,
-            pizzaName: pizzaData[randomIndex].name,
-        }));
-    }, []);
-
-    if (pizzaIndex === null) {
-        return <p>Loading...</p>;
-    }
-
-    const pizzaPrice = pizzaData[pizzaIndex].price;
+    const pizzaPrice = selectedProduct ? selectedProduct.price : 0;
 
     const updateOrder = (key, value) => {
-        setOrder((prevOrder) => ({
-            ...prevOrder,
-            [key]: value,
-        }));
+        setOrder((prevOrder) => ({ ...prevOrder, [key]: value }));
     };
 
     const handleToppingChange = (event) => {
         const value = event.target.value;
-
         setOrder((prevOrder) => {
             const isSelected = prevOrder.selectedToppings.includes(value);
             if (!isSelected && prevOrder.selectedToppings.length >= 10) {
-                setErrorMessage("En fazla 10 malzeme seçebilirsiniz.");
                 return prevOrder;
             }
             const selectedToppings = isSelected
                 ? prevOrder.selectedToppings.filter((topping) => topping !== value)
                 : [...prevOrder.selectedToppings, value];
-            setErrorMessage("");
             return { ...prevOrder, selectedToppings };
         });
     };
@@ -67,11 +43,7 @@ function OrderPage({ onBack, onSuccess }) {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('https://reqres.in/api/users', {
-                ...order,
-                totalPrice,
-            });
-            console.log('Order submitted:', response.data);
+            const response = await axios.post('https://reqres.in/api/users', { ...order, totalPrice });
             onSuccess();
         } catch (error) {
             console.error('Error submitting order:', error);
@@ -82,12 +54,11 @@ function OrderPage({ onBack, onSuccess }) {
         <div>
             <Header onBack={onBack} />
             <section>
-                <PizzaInfo pizza={pizzaData[pizzaIndex]} />
+                <PizzaInfo pizza={selectedProduct} />
                 <PizzaForm
                     order={order}
                     updateOrder={updateOrder}
                     handleToppingChange={handleToppingChange}
-                    errorMessage={errorMessage}
                 />
                 <OrderSummary
                     order={order}

@@ -1,15 +1,15 @@
 import React from 'react';
 import ExpressCard from './ExpressCard';
 
-function ExpressCards({ item }) {
-    if (!Array.isArray(item)) {
+function ExpressCards({ items, onProductClick }) {
+    if (!Array.isArray(items)) {
         return <p>Veri bulunamadı veya geçerli değil.</p>;
     }
 
     return (
         <div className="express-menu-cards">
-            {item.map((product, index) => (
-                item && <ExpressCard key={index} item={product} />
+            {items.map((product, index) => (
+                <ExpressCard key={index} item={product} onClick={() => onProductClick(product)} />
             ))}
         </div>
     );

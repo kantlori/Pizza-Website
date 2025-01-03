@@ -8,7 +8,7 @@ function HeaderNavs({ item, onNavClick }) {
                 <Nav
                     key={index}
                     item={category}
-                    onClick={() => onNavClick(category.name.toLowerCase().replace(" ", ""))}
+                    onClick={() => onNavClick(category.name.toLowerCase().replace(/\s+/g, ''))}
                 />
             ))}
         </ul>
