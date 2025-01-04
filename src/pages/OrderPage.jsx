@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import pizzaData from '../fakeData';
-import OrderSummary from '../components/OrderSummary';
-import PizzaForm from '../components/PizzaForm';
-import PizzaInfo from '../components/PizzaInfo';
-import Header from '../components/Header';
-import '../css/OrderPage.css';
-import '../css/Media.css';
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import pizzaData from "../fakeData";
+import OrderSummary from "../components/OrderSummary";
+import PizzaForm from "../components/PizzaForm";
+import PizzaInfo from "../components/PizzaInfo";
+import Header from "../components/Header";
+import "../css/OrderPage.css";
+import "../css/Media.css";
 
-function OrderPage({ onBack, onSuccess }) {
+function OrderPage() {
+    const history = useHistory();
     const [pizzaIndex, setPizzaIndex] = useState(null);
     const [order, setOrder] = useState({
         username: "",
@@ -67,20 +69,20 @@ function OrderPage({ onBack, onSuccess }) {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('https://reqres.in/api/users', {
+            const response = await axios.post("https://reqres.in/api/users", {
                 ...order,
                 totalPrice,
             });
-            console.log('Order submitted:', response.data);
-            onSuccess();
+            console.log("Order submitted:", response.data);
+            history.push("/success");
         } catch (error) {
-            console.error('Error submitting order:', error);
+            console.error("Error submitting order:", error);
         }
     };
 
     return (
         <div>
-            <Header onBack={onBack} />
+            <Header onBack={() => history.push("/")} />
             <section>
                 <PizzaInfo pizza={pizzaData[pizzaIndex]} />
                 <PizzaForm

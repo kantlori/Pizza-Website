@@ -1,8 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "../../images/iteration-1-images/logo.svg";
-import "../css/SuccessPage.css"
+import "../css/SuccessPage.css";
 
-function SuccessPage({ onBack }) {
+function SuccessPage() {
+    const history = useHistory();
+
     return (
         <div className="success-page" data-cy="success-page">
             <div className="logo">
@@ -13,7 +16,9 @@ function SuccessPage({ onBack }) {
                 <p data-cy="success-order-received">SİPARİŞİNİZ ALINDI!</p>
             </div>
             <div className="success-button">
-                <button onClick={onBack} data-cy="back-to-home">Anasayfaya Dön</button>
+                <button onClick={() => history.push("/")} data-cy="back-to-home">
+                    Anasayfaya Dön
+                </button>
             </div>
         </div>
     );

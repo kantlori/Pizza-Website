@@ -1,33 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import OrderPage from "./pages/OrderPage";
 import SuccessPage from "./pages/SuccessPage";
 
 function App() {
-  const [showOrderPage, setShowOrderPage] = useState(false);
-  const [showSuccessPage, setShowSuccessPage] = useState(false);
-
   return (
-    <div data-cy="app">
-      {!showOrderPage && !showSuccessPage && (
-        <HomePage onButtonClick={() => setShowOrderPage(true)} />
-      )}
-      {showOrderPage && !showSuccessPage && (
-        <OrderPage
-          onBack={() => setShowOrderPage(false)}
-          onSuccess={() => {
-            setShowOrderPage(false);
-            setShowSuccessPage(true);
-          }}
-        />
-      )}
-      {showSuccessPage && (
-        <SuccessPage onBack={() => {
-          setShowSuccessPage(false);
-          setShowOrderPage(false);
-        }} />
-      )}
-    </div>
+    <Router>
+      <div data-cy="app">
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/order" component={OrderPage} />
+          <Route path="/success" component={SuccessPage} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
